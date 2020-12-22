@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get :about,        to: 'static_pages#about'
   get :signup,       to: 'users#new'
   get :login,        to: 'sessoin#new'
-  get :login,        to: 'session#create'
-  get :login,        to: 'sessoin#destroy'
+  post :login,        to: 'session#create'
+  delete :login,        to: 'sessoin#destroy'
   resources :users
 end
