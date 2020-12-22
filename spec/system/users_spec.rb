@@ -9,12 +9,12 @@ RSpec.describe "Users", type: :system do
     end
 
     context "ページレイアウト" do
-      it "「Sailor登録」の文字列が存在することを確認" do
-        expect(page).to have_content 'Sailor登録'
+      it "「ユーザー登録」の文字列が存在することを確認" do
+        expect(page).to have_content 'ユーザー登録'
       end
 
       it "正しいタイトルが表示されることを確認" do
-        expect(page).to have_title full_title('Sailor登録')
+        expect(page).to have_title full_title('ユーザー登録')
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "password"
         click_button "登録する"
-        expect(page).to have_content "Enjoy Sailingへようこそ！"
+        expect(page).to have_content "2nd Familyへようこそ！"
       end
 
       it "無効なユーザーでユーザー登録を行うとユーザー登録失敗のフラッシュが表示されること" do
@@ -45,15 +45,15 @@ RSpec.describe "Users", type: :system do
       before do
         visit user_path(user)
       end
- 
+
       it "「プロフィール」の文字列が存在することを確認" do
         expect(page).to have_content 'プロフィール'
       end
- 
+
       it "正しいタイトルが表示されることを確認" do
         expect(page).to have_title full_title('プロフィール')
       end
-  
+
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
