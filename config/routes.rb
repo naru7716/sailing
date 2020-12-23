@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get :about,        to: 'static_pages#about'
   get :signup,       to: 'users#new'
-  get :login,        to: 'sessoin#new'
-  post :login,        to: 'session#create'
-  delete :login,        to: 'sessoin#destroy'
+  get :login,        to: 'sessions#new'
+  post :login,       to: 'sessions#create'
+  delete :logout,    to: 'sessions#destroy'
   resources :users
 end
