@@ -28,4 +28,6 @@ RSpec.describe "ログイン", type: :request do
                                           password: user.password } }
     expect(is_logged_in?).not_to be_truthy
   end
+
+  
 end
