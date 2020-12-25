@@ -12,6 +12,7 @@ AllCops:
     - 'vendor/**/**/*'
     - 'spec/*'
     - 'app/helpers/*'
+    - 'app/models/*'
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false
