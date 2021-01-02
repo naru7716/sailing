@@ -5,7 +5,8 @@ RSpec.describe "プロフィール編集", type: :request do
   let(:other_user) { create(:user) }
 
   context "認可されたユーザーの場合" do
-    it "レスポンスが正常に表示されること" do
+    it "レスポンスが正常に表示されること（フレンドリーフォロワーキングになっている）" do
+      get edit_user_path(user)
       login_for_request(user)
       get edit_user_path(user)
       expect(response).to render_template('users/edit')
