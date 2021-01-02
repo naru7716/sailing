@@ -19,15 +19,6 @@ RSpec.describe "Users", type: :system do
     end
 
     context "ユーザー登録処理" do
-      it "有効なユーザーでユーザー登録を行うと登録成功のフラッシュが表示されること" do
-        fill_in "ユーザー名", with: "Example User"
-        fill_in "メールアドレス", with: "user@example.com"
-        fill_in "パスワード", with: "password"
-        fill_in "パスワード(確認)", with: "password"
-        click_button "登録する"
-        expect(page).to have_content "2nd Familyへようこそ！"
-      end
-
       it "無効なユーザーでユーザー登録を行うとユーザー登録失敗のフラッシュが表示されること" do
         fill_in "ユーザー名", with: ""
         fill_in "メールアドレス", with: "user@example.com"
@@ -42,7 +33,9 @@ RSpec.describe "Users", type: :system do
 
   describe "プロフィール編集ページ" do
     before do
-      visit edit_user_path(user)
+      login_for_system(user)
+      visit user_path(user)
+      click_link "プロフィール編集"
     end
 
     context "ページレイアウト" do
@@ -78,6 +71,7 @@ RSpec.describe "Users", type: :system do
   describe "プロフィールページ" do
     context "ページレイアウト" do
       before do
+        login_for_system(user)
         visit user_path(user)
       end
 
