@@ -10,7 +10,7 @@ AllCops:
     - 'config/**/*'
     - 'db/**/*'
     - 'vendor/**/**/*'
-    - 'spec/*'
+    - 'spec/**/*'
     - 'app/helpers/*'
     - 'app/models/*'
 
