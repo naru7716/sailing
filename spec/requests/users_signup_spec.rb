@@ -16,9 +16,6 @@ RSpec.describe "ユーザー登録", type: :request do
                                          password: "password",
                                          password_confirmation: "password" } }
     }.to change(User, :count).by(1)
-    redirect_to @user
-    follow_redirect!
-    expect(response).to render_template('users/show')
   end
 
   it "無効なユーザーで登録" do
