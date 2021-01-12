@@ -220,4 +220,13 @@ ja:
         sex: 性別
         created_at: 登録日時
         updated_at: 更新日時
+      microposts:
+        id: ID
+        name: タイトル
+        description: 内容
+        team: チーム名
+        wind: 風向、風速
+        maintenance: 整備箇所
+        time: 練習時間
+        user_id: 作成者のID
   date:
