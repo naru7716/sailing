@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Micropost, type: :model do
-  let!(:micropost) { create(:micropost) }
+  let(:micropost) { create(:micropost) }
+  let!(:micropost_yesterday) { create(:micropost, :yesterday) }
+  let!(:micropost_one_week_ago) { create(:micropost, :one_week_ago) }
+  let!(:micropost_one_month_ago) { create(:micropost, :one_month_ago) }
 
   context "バリデーション" do
     it "有効な状態であること" do
@@ -60,6 +63,12 @@ RSpec.describe Micropost, type: :model do
       micropost = build(:micropost, time: 6)
       micropost.valid?
       expect(micropost.errors[:time]).to include("は5以下の値にしてください")
+    end
+  end
+
+  context "並び順" do
+    it "最も最近の投稿が最初の投稿になっていること" do
+      expect(micropost).to eq Micropost.first
     end
   end
 end
