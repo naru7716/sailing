@@ -1,0 +1,12 @@
+<li id="microposts-<%= microposts.id %>">
+  <%= link_to gravatar_for(microposts.user, size: 50), microposts.user %>
+  <span class="name"><%= link_to microposts.name, "#" %></span>
+  <span class="team"><%= microposts.team %></span><br>
+  <span class="wind"><%= microposts.wind %></span><br>
+  <span class="description"><%= microposts.description %></span><br>
+  <span class="time">練習<%= microposts.time %>時間　</span>
+  <span class="maintenance"><%= microposts.maintenance %></span><br>
+  <span class="timestamp">
+    <%= time_ago_in_words(dish.created_at) %>前に投稿
+  </span>
+</li>
