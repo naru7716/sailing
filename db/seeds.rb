@@ -13,3 +13,13 @@ User.create!(name:  name,
     password:              password,
     password_confirmation: password)
 end
+
+10.times do |n|
+  Micropost.create!(name: "大会１ヶ月前",
+               description: "ウネリに合わせた走らせ方を身につけた",
+               team: "あああ大学",
+               wind: "南南東",
+               maintenance: "グースネック交換",
+               time: 5,
+               user_id: 1)
+end

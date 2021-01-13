@@ -105,6 +105,7 @@ RSpec.describe "Users", type: :system do
     context "ページレイアウト" do
       before do
         login_for_system(user)
+        create_list(:micropost, 10, user: user)
         visit user_path(user)
       end
 
@@ -120,6 +121,26 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
         expect(page).to have_content user.sex
+      end
+
+      it "投の件数が表示されていることを確認" do
+        expect(page).to have_content "投稿 (#{user.microposts.count})"
+      end
+
+      it "投稿の情報が表示されていることを確認" do
+        Micropost.take(5).each do |micropost|
+          expect(page).to have_link micropost.name
+          expect(page).to have_content micropost.description
+          expect(page).to have_content micropost.user.name
+          expect(page).to have_content micropost.time
+          expect(page).to have_content micropost.team
+          expect(page).to have_content micropost.wind
+          expect(page).to have_content micropost.maintenance
+        end
+      end
+
+      it "投稿のページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
       end
     end
   end

@@ -29,23 +29,6 @@ ActiveRecord::Schema.define(version: 2021_01_12_101437) do
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "team"
-    t.text "description"
-    t.string "wind"
-    t.string "boat"
-    t.text "race"
-    t.text "member"
-    t.text "maintenance"
-    t.integer "time"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -60,5 +43,4 @@ ActiveRecord::Schema.define(version: 2021_01_12_101437) do
   end
 
   add_foreign_key "microposts", "users"
-  add_foreign_key "posts", "users"
 end
