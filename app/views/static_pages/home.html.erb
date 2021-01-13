@@ -1,7 +1,12 @@
 <% if logged_in? %>
   <div class="container">
-    <h3>みんなの投稿 (<%= @feed_items.count %>)</h3>
-    <%= render 'layouts/feed' %>
+    <div class="col-md-9">
+      <h3>みんなの投稿 (<%= @feed_items.count %>)</h3>
+      <%= render 'layouts/feed' %>
+    </div>
+    <div class="col-md-3">
+        <p><%= link_to "新しい投稿をする", new_micropost_path, class: "btn btn-primary btn-lg btn-record" %></p>
+  	  </div>
   </div>
 <% else %>
   <center>
