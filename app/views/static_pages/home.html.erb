@@ -1,7 +1,14 @@
-<center>
-  <br>
-  <br>
-  <h1>Enjoy Sailing へようこそ！</h1>
-  <h2>私たちのセイリングライフをシェアしましょう！</h2>
-  <p>多くのセイラーと繋がろう！！</p>
-</center>
+<% if logged_in? %>
+  <div class="container">
+    <h3>みんなの投稿 (<%= @feed_items.count %>)</h3>
+    <%= render 'layouts/feed' %>
+  </div>
+<% else %>
+  <center>
+    <br>
+    <br>
+    <h1>Enjoy Sailing へようこそ！</h1>
+    <h2>私たちのセイリングライフをシェアしましょう！</h2>
+    <p>多くのセイラーと繋がろう！！</p>
+  </center>
+<% end %>
