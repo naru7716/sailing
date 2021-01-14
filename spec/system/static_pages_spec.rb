@@ -17,11 +17,14 @@ RSpec.describe "StaticPages", type: :system do
     end
 
     context "投稿フィード", js: true do
-      let!(:user) { create(:user) }
-      let!(:micropost) { create(:micropost, user: user) }
+      let(:user) { create(:user) }
+      let(:micropost) { create(:micropost, user: user) }
+
+      before do
+        login_for_system(user)
+      end
 
       it "投稿のぺージネーションが表示されること" do
-        login_for_system(user)
         create_list(:micropost, 6, user: user)
         visit root_path
         expect(page).to have_content "みんなの投稿 (#{user.microposts.count})"
@@ -29,6 +32,11 @@ RSpec.describe "StaticPages", type: :system do
         Micropost.take(5).each do |d|
           expect(page).to have_link d.name
         end
+      end
+
+      it "「新しい投稿をする」リンクが表示されること" do
+        visit root_path
+        expect(page).to have_link "新しい投稿をする", href: new_micropost_path
       end
     end
   end
