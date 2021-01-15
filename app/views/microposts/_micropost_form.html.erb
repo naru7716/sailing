@@ -1,28 +1,28 @@
 <%= form_with model: @micropost, local: true do |f| %>
   <%= render 'layouts/error_messages', object: f.object %>
   <div class = 'form-group'>
-    <%= f.label :name %>　<span class="input-need">※必須</span>
-    <%= f.text_field :name, class: 'form-control', id: 'micropost_name' %>
+    <%= f.label :タイトル %>　<span class="input-need">※必須</span>
+    <%= f.text_field :name, class: 'form-control', id: 'タイトル' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :team %>　<span class="input-unneed">※任意</span>
-    <%= f.text_field :portion, class: 'form-control', id: 'micropost_team' %>
+    <%= f.label :チーム名 %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :team, class: 'form-control', id: 'チーム名' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :wind %>　<span class="input-unneed">※任意</span>
-    <%= f.text_field :tips, size: "30x4", class: 'form-control', id: 'micropost_wind' %>
+    <%= f.label :風向風速 %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :wind, size: "30x4", class: 'form-control', id: '風向風速' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :description %>　<span class="input-unneed">※任意</span>
-    <%= f.text_field :description, size: "60x4", class: 'form-control', id: 'micropost_description' %>
+    <%= f.label :内容（練習メニューなど） %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :description, size: "60x4", class: 'form-control', id: '内容（練習メニューなど）' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :time %>　<span class="input-unneed">※任意</span>
-    <%= f.text_field :portion, class: 'form-control', id: 'micropost_time' %>
+    <%= f.label :練習時間 %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :time, class: 'form-control', id: '練習時間' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :maintenance %>　<span class="input-unneed">※任意</span>
-    <%= f.text_field :tips, size: "30x4", class: 'form-control', id: 'micropost_maintenance' %>
+    <%= f.label :整備箇所 %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :maintenance, size: "30x4", class: 'form-control', id: '整備箇所' %>
   </div>
   <%= f.submit nil, class: 'btn btn-primary' %>
 <% end %>
