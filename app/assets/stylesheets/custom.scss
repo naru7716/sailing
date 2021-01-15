@@ -216,7 +216,6 @@ span.picture {
   margin-top: 3em;
 }
 
-//// 料理登録ページ ////
 .input-need {
   color: red;
   font-size: 13px;
@@ -224,4 +223,35 @@ span.picture {
 
 .input-unneed {
   font-size: 13px;
+}
+
+h2.micropost-name {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.micropost-desription {
+  font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.micropost-wind {
+  margin-top: 30px;
+}
+
+.micropost-time {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h5 {
+    font-size: 17px;
+  }
+}
+
+.micropost-maintenance {
+  font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
