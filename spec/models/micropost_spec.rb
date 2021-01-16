@@ -59,10 +59,10 @@ RSpec.describe Micropost, type: :model do
       expect(micropost.errors[:time]).to include("は1以上の値にしてください")
     end
 
-    it "練習時間が5以下でなければ無効な状態であること" do
-      micropost = build(:micropost, time: 6)
+    it "練習時間が10以下でなければ無効な状態であること" do
+      micropost = build(:micropost, time: 11)
       micropost.valid?
-      expect(micropost.errors[:time]).to include("は5以下の値にしてください")
+      expect(micropost.errors[:time]).to include("は10以下の値にしてください")
     end
   end
 

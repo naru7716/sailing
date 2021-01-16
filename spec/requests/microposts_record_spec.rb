@@ -42,7 +42,7 @@ RSpec.describe "投稿作成", type: :request do
                                             time: 5} }
       }.to change(Micropost, :count).by(1)
       follow_redirect!
-      expect(response).to render_template('static_pages/home')
+      expect(response).to render_template('microposts/show')
     end
 
     it "無効な投稿データでは登録できないこと" do

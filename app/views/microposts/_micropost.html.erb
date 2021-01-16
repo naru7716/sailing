@@ -1,6 +1,6 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="name">タイトル: <%= link_to micropost.name, "#" %></span><br>
+  <span class="name"><%= link_to micropost.name, micropost_path(micropost) %></span>
   <span class="team"><%= micropost.team %></span><br>
   <span class="wind">風: <%= micropost.wind %></span><br>
   <span class="description">内容（練習メニューなど）: <%= micropost.description %></span><br>

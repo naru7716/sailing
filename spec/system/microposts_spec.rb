@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Microposts", type: :system do
   let(:user) { create(:user) }
+  let(:micropost) { create(:micropost, user: user) }
 
   describe "投稿作成ページ" do
     before do
@@ -49,6 +50,28 @@ RSpec.describe "Microposts", type: :system do
         fill_in "整備箇所", with: "グースネック交換"
         click_button "登録する"
         expect(page).to have_content "Nameを入力してください"
+      end
+    end
+  end
+
+  describe "投稿詳細ページ" do
+    context "ページレイアウト" do
+      before do
+        login_for_system(user)
+        visit micropost_path(micropost)
+      end
+
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title("#{micropost.name}")
+      end
+
+      it "投稿情報が表示されること" do
+        expect(page).to have_content micropost.name
+        expect(page).to have_content micropost.description
+        expect(page).to have_content micropost.team
+        expect(page).to have_content micropost.time
+        expect(page).to have_content micropost.maintenance
+        expect(page).to have_content micropost.wind
       end
     end
   end
