@@ -18,7 +18,7 @@ RSpec.describe "StaticPages", type: :system do
 
     context "投稿フィード", js: true do
       let(:user) { create(:user) }
-      let(:micropost) { create(:micropost, user: user) }
+      let!(:micropost) { create(:micropost, user: user) }
 
       before do
         login_for_system(user)
@@ -37,6 +37,13 @@ RSpec.describe "StaticPages", type: :system do
       it "「新しい投稿をする」リンクが表示されること" do
         visit root_path
         expect(page).to have_link "新しい投稿をする", href: new_micropost_path
+      end
+
+      it "投稿を削除後、削除成功のフラッシュが表示されること" do
+        visit root_path
+        click_on '削除'
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '投稿が削除されました'
       end
     end
   end
