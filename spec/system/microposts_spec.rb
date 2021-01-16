@@ -75,4 +75,52 @@ RSpec.describe "Microposts", type: :system do
       end
     end
   end
+
+  describe "投稿編集ページ" do
+    before do
+      login_for_system(user)
+      visit micropost_path(micropost)
+      click_link "編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title('投稿の編集')
+      end
+
+      it "入力部分に適切なラベルが表示されること" do
+        expect(page).to have_content 'タイトル'
+        expect(page).to have_content 'チーム名'
+        expect(page).to have_content '内容'
+        expect(page).to have_content '風向風速'
+        expect(page).to have_content '練習時間'
+        expect(page).to have_content '整備箇所'
+      end
+    end
+
+    context "投稿の更新処理" do
+      it "有効な更新" do
+        fill_in "タイトル", with: "編集：大会１ヶ月前"
+        fill_in "チーム名", with: "編集：あああ大学"
+        fill_in "内容（練習メニューなど）", with: "レース艇のセッティングの見直しを海上で行った。"
+        fill_in "風向風速", with: "編集：南南東"
+        fill_in "練習時間", with: 10
+        fill_in "整備箇所", with: "編集：グースネック交換"
+        click_button "更新する"
+        expect(page).to have_content "投稿が更新されました！"
+        expect(micropost.reload.name).to eq "編集：大会１ヶ月前"
+        expect(micropost.reload.team).to eq "編集：あああ大学"
+        expect(micropost.reload.description).to eq "レース艇のセッティングの見直しを海上で行った。"
+        expect(micropost.reload.wind).to eq "編集：南南東"
+        expect(micropost.reload.maintenance).to eq "編集：グースネック交換"
+        expect(micropost.reload.time).to eq 10
+      end
+
+      it "無効な更新" do
+        fill_in "タイトル", with: ""
+        click_button "更新する"
+        expect(page).to have_content 'Nameを入力してください'
+      end
+    end
+  end
 end

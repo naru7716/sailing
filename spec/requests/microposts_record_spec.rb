@@ -26,7 +26,7 @@ RSpec.describe "投稿作成", type: :request do
       login_for_request(user)
       get new_micropost_path
     end
- 
+
     it "レスポンスが正常に表示されること" do
       expect(response).to have_http_status "200"
       expect(response).to render_template('microposts/new')
