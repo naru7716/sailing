@@ -29,6 +29,9 @@
           <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
         </div>
         <%= f.submit "更新する", class: "btn btn-primary" %>
+        <p></p>
+        <%= link_to "投稿を削除する", micropost_path(@micropost), method: :delete,
+                             data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
       <% end %>
     </div>
   </div>

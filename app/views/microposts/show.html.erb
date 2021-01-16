@@ -6,6 +6,10 @@
       <% if current_user == @micropost.user %>
         <%= link_to "編集", edit_micropost_path(@micropost), class: 'edit-micropost' %>　
       <% end %>
+      <% if current_user.admin? || (current_user == @micropost.user) %>
+        <%= link_to "削除", micropost_path(@micropost), method: :delete, class: 'delete-micropsot',
+                                      data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </div>
     <h5 class="micropost-description">内容（練習メニューなど): 
     <h4><%= @micropost.description %></h4></h5>
