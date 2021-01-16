@@ -19,6 +19,20 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def edit
+    @micropost = Micropost.find(params[:id])
+  end
+
+  def update
+    @micropost = Micropost.find(params[:id])
+    if @micropost.update_attributes(micropost_params)
+      flash[:success] = "投稿が更新されました！"
+      redirect_to @micropost
+    else
+      render 'microposts/edit'
+    end
+  end
+
   private
 
     def micropost_params

@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row">
     <h2 class="micropost-name"><%= @micropost.name %></h2>
+    <div class="change-dish">
+      <% if current_user == @micropost.user %>
+        <%= link_to "編集", edit_micropost_path(@micropost), class: 'edit-micropost' %>　
+      <% end %>
+    </div>
     <h5 class="micropost-description">内容（練習メニューなど): 
     <h4><%= @micropost.description %></h4></h5>
     <h4 class="micropost-team">チーム名：<%= @micropost.team %></h4>
