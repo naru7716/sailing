@@ -39,8 +39,7 @@ class MicropostsController < ApplicationController
     if current_user.admin? || current_user?(@micropost.user)
       @micropost.destroy
       flash[:success] = "投稿が削除されました"
-      redirect_to
-      request.referrer == user_url(@micropost.user) ? user_url(@micropost.user) : root_url
+      redirect_to request.referrer == user_url(@micropost.user) ? user_url(@micropost.user) : root_url
     else
       flash[:danger] = "他人の投稿は削除できません"
       redirect_to root_url
