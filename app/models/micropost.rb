@@ -8,6 +8,7 @@ class Micropost < ApplicationRecord
   validates :team, length: { maximum: 20 }
   validates :wind, length: { maximum: 30 }
   validates :maintenance, length: { maximum: 50 }
+  validate  :picture_size
   validates :time,
             :numericality => {
               :only_interger => true,
@@ -15,4 +16,10 @@ class Micropost < ApplicationRecord
               :less_than_or_equal_to => 10
             },
             allow_nil: true
+  private
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "：5MBより大きい画像はアップロードできません。")
+      end
+    end
 end

@@ -13,6 +13,9 @@ AllCops:
     - 'spec/**/*'
     - 'app/helpers/*'
     - 'app/models/*'
+    - 'app/uploaders/*'
+    - 'app/controllers/microposts_controller.rb'
+
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false
