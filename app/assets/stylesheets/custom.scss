@@ -263,3 +263,9 @@ h2.micropost-name {
 .edit-micropost .delete-micropost {
   font-size: 15px;
 }
+
+.micropost-picture img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}

@@ -4,7 +4,7 @@
   <span class="team"><%= micropost.team %></span><br>
   <span class="wind">風: <%= micropost.wind %></span><br>
   <span>
-    <%= link_to((image_tag micropost.picture.url), micropost_path(micropost.id), class: 'micropost-picture') if micropost.picture.url.present? %>
+    <%= link_to((image_tag micropost.picture.thumb200.url), micropost_path(micropost.id), class: 'micropost-picture') if micropost.picture.url.present? %>
   </span>
   <span class="description">内容（練習メニューなど）: <%= micropost.description %></span><br>
   <span class="time">練習<%= micropost.time %>時間　</span><br>
