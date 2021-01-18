@@ -29,6 +29,7 @@ ja:
         maintenance: 整備箇所
         time: 練習時間
         user_id: 作成者のID
+        picture: 投稿の写真
   date:
     abbr_day_names:
     - 日

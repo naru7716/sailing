@@ -28,6 +28,12 @@
           <%= f.label :整備箇所 %>　<span class="input-unneed">※任意</span>
           <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
         </div>
+        <span class="picture">
+          <%= f.label :picture %>　<span class="input-unneed">※任意</span>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish-picture' %>
+          <%= image_tag(@micropost.picture.thumb400.url) if @micropost.picture.url.present? %>
+        </span>
+        <br><br>
         <%= f.submit "更新する", class: "btn btn-primary" %>
         <p></p>
         <%= link_to "投稿を削除する", micropost_path(@micropost), method: :delete,
