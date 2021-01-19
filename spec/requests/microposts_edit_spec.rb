@@ -4,6 +4,8 @@ RSpec.describe "投稿編集", type: :request do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let(:micropost) { create(:micropost, user: user) }
+  let(:picture2_path) { File.join(Rails.root, 'spec/fixtures/test_micropost2.jpg') }  # 追記
+  let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) }
 
   context "認可されたユーザーの場合" do
     it "レスポンスが正常に表示されること" do
@@ -15,7 +17,8 @@ RSpec.describe "投稿編集", type: :request do
                                                       team: "あああ大学",
                                                       wind: "南南東",
                                                       maintenance: "グースネック交換",
-                                                      time: 5} }
+                                                      time: 5,
+                                                      picture: picture2 } }
       redirect_to micropost
       follow_redirect!
       expect(response).to render_template('microposts/show')
