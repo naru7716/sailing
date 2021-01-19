@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe "投稿作成", type: :request do
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost, user: user) }
-
+  let!(:micropost) { create(:micropost, user: user) }
+  let(:picture_path) { File.join(Rails.root, 'spec/fixtures/test_micropost.jpg') }
+  let(:picture) { Rack::Test::UploadedFile.new(picture_path) }
+  
   context "ログインしているユーザーの場合" do
     it "レスポンスが正常に表示されること" do
       login_for_request(user)
@@ -39,7 +41,8 @@ RSpec.describe "投稿作成", type: :request do
                                             team: "あああ大学",
                                             wind: "南南東",
                                             maintenance: "グースネック交換",
-                                            time: 5} }
+                                            time: 5,
+                                            picture: picture } }
       }.to change(Micropost, :count).by(1)
       follow_redirect!
       expect(response).to render_template('microposts/show')
@@ -52,7 +55,8 @@ RSpec.describe "投稿作成", type: :request do
                                             team: "あああ大学",
                                             wind: "南南東",
                                             maintenance: "グースネック交換",
-                                            time: 5} }
+                                            time: 5,
+                                            picture: picture } }
       }.not_to change(Micropost, :count)
       expect(response).to render_template('microposts/new')
     end

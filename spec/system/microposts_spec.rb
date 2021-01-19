@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Microposts", type: :system do
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost, user: user) }
+  let(:micropost) { create(:micropost, :picture, user: user) }
 
   describe "投稿作成ページ" do
     before do
@@ -37,6 +37,7 @@ RSpec.describe "Microposts", type: :system do
         fill_in "風向風速", with: "南南東"
         fill_in "練習時間", with: "5"
         fill_in "整備箇所", with: "グースネック交換"
+        attach_file "micropost[picture]", "#{Rails.root}/spec/fixtures/test_micropost.jpg"
         click_button "登録する"
         expect(page).to have_content "投稿が作成されました！"
       end
@@ -116,6 +117,7 @@ RSpec.describe "Microposts", type: :system do
         fill_in "風向風速", with: "編集：南南東"
         fill_in "練習時間", with: 10
         fill_in "整備箇所", with: "編集：グースネック交換"
+        attach_file "micropost[picture]", "#{Rails.root}/spec/fixtures/test_micropost2.jpg"
         click_button "更新する"
         expect(page).to have_content "投稿が更新されました！"
         expect(micropost.reload.name).to eq "編集：大会１ヶ月前"
@@ -124,6 +126,7 @@ RSpec.describe "Microposts", type: :system do
         expect(micropost.reload.wind).to eq "編集：南南東"
         expect(micropost.reload.maintenance).to eq "編集：グースネック交換"
         expect(micropost.reload.time).to eq 10
+        expect(micropost.reload.picture.url).to include "test_micropost2.jpg"
       end
 
       it "無効な更新" do
@@ -135,6 +138,8 @@ RSpec.describe "Microposts", type: :system do
 
     context "投稿の削除処理", js: true do
       it "削除成功のフラッシュが表示されること" do
+        login_for_system(user)
+        visit micropost_path(micropost)
         click_on '削除'
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
