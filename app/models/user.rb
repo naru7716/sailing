@@ -69,6 +69,18 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
 
+  def favorite(micropost)
+    Favorite.create!(user_id: id, micropost_id: micropost.id)
+  end
+
+  def unfavorite(micropost)
+    Favorite.find_by(user_id: id, micropost_id: micropost.id).destroy
+  end
+
+  def favorite?(micropost)
+    !Favorite.find_by(user_id: id, micropost_id: micropost.id).nil?
+  end
+
   private
 
     def downcase_email
