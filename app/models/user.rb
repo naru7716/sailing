@@ -9,6 +9,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :microposts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   attr_accessor :remember_token
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 50 }
@@ -46,7 +47,10 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where("user_id = ?", id)
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
   end
 
   def follow(other_user)
@@ -63,6 +67,18 @@ class User < ApplicationRecord
 
   def followed_by?(other_user)
     followers.include?(other_user)
+  end
+
+  def favorite(micropost)
+    Favorite.create!(user_id: id, micropost_id: micropost.id)
+  end
+
+  def unfavorite(micropost)
+    Favorite.find_by(user_id: id, micropost_id: micropost.id).destroy
+  end
+
+  def favorite?(micropost)
+    !Favorite.find_by(user_id: id, micropost_id: micropost.id).nil?
   end
 
   private
