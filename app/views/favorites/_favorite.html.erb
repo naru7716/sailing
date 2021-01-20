@@ -1,0 +1,14 @@
+<% @micropost = Micropost.find(favorite.micropost_id) %>
+<% user = @micropost.user %>
+<li id="favorite-<%= favorite.id %>">
+  <div class="row favorite-micropost">
+    <div class="col-md-2">
+      <%= link_to((image_tag @micropost.picture.thumb200.url), micropost_path(@micropost), class: 'micropost-picture') %>
+    </div>
+    <div class="col-md-7">
+      <p><%= link_to @micropost.name, micropost_path(@micropost) %></p>
+      <p><%= @micropost.description %></p>
+      <p class="micropost-user"><%= link_to user.name, user_path(user) %>さんの投稿</p>
+    </div>
+  </div>
+</li>
