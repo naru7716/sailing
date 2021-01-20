@@ -1,3 +1,5 @@
+<% @micropost = micropost %>
+
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="name"><%= link_to micropost.name, micropost_path(micropost) %></span>
@@ -7,6 +9,7 @@
     <%= link_to((image_tag micropost.picture.thumb200.url), micropost_path(micropost.id), class: 'micropost-picture') if micropost.picture.url.present? %>
   </span>
   <br><br>
+  <%= render 'users/favorite_form' %>
   <span class="description">内容（練習メニューなど）: <%= micropost.description %></span><br>
   <span class="time">練習<%= micropost.time %>時間　</span><br>
   <span class="maintenance">整備箇所: <%= micropost.maintenance %></span><br>
