@@ -170,6 +170,42 @@ RSpec.describe "Users", type: :system do
         user.unfavorite(micropost)
         expect(user.favorite?(micropost)).to be_falsey
       end
+
+      it "トップページからお気に入り登録/解除ができること", js: true do
+        visit root_path
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+      end
+
+      it "ユーザー個別ページからお気に入り登録/解除ができること", js: true do
+        visit user_path(user)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+      end
+
+      it "投稿個別ページからお気に入り登録/解除ができること", js: true do
+        visit micropost_path(micropost)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{micropost.id}/create"
+      end
     end
   end
 end
