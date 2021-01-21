@@ -7,6 +7,12 @@ class CommentsController < ApplicationController
     @comment = @micropost.comments.build(user_id: current_user.id, content: params[:comment][:content])
     if !@micropost.nil? && @comment.save
       flash[:success] = "コメントを追加しました！"
+      if @user != current_user
+        @user.notifications.create(micropost_id: @micropost.id, variety: 2,
+                                   from_user_id: current_user.id,
+                                   content: @comment.content)
+        @user.update_attribute(:notification, true)
+      end
     else
       flash[:danger] = "コメントは50文字以内で入力してください"
     end
