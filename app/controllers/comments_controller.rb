@@ -14,5 +14,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @micropost = @comment.micropost
+    if current_user.id == @comment.user_id
+      @comment.destroy
+      flash[:success] = "コメントを削除しました"
+    end
+    redirect_to micropost_url(@micropost)
   end
 end
