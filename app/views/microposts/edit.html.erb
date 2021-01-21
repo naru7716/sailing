@@ -36,7 +36,7 @@
         <br><br>
         <%= f.submit "更新する", class: "btn btn-primary" %>
         <p></p>
-        <%= link_to "投稿を削除する", micropost_path(@micropost), method: :delete,
+        <%= link_to "削除", micropost_path(@micropost), method: :delete,
                              data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
       <% end %>
     </div>

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Microposts", type: :system do
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost, :picture, user: user) }
+  let!(:other_user) { create(:user) }
+  let!(:micropost) { create(:micropost, :picture, user: user) }
+  let!(:comment) { create(:comment, user_id: user.id, micropost: micropost) }
 
   describe "投稿作成ページ" do
     before do
@@ -80,7 +82,7 @@ RSpec.describe "Microposts", type: :system do
       it "削除成功のフラッシュが表示されること" do
         login_for_system(user)
         visit micropost_path(micropost)
-        click_on '削除'
+        click_link '削除', match: :first
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
       end
@@ -140,9 +142,36 @@ RSpec.describe "Microposts", type: :system do
       it "削除成功のフラッシュが表示されること" do
         login_for_system(user)
         visit micropost_path(micropost)
-        click_on '削除'
+        click_link '削除', match: :first
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
+      end
+    end
+
+    context "コメントの登録＆削除" do
+      it "自分の投稿に対するコメントの登録＆削除が正常に完了すること" do
+        login_for_system(user)
+        visit micropost_path(micropost)
+        fill_in "comment_content", with: "コントロールロープを動かす回数を増やしてみよう"
+        click_button "コメント"
+        within find("#comment-#{Comment.last.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: 'コントロールロープを動かす回数を増やしてみよう'
+        end
+        expect(page).to have_content "コメントを追加しました！"
+        click_link "削除", href: comment_path(Comment.last)
+        expect(page).not_to have_selector 'span', text: 'コントロールロープを動かす回数を増やしてみよう'
+        expect(page).to have_content "コメントを削除しました"
+      end
+
+      it "別ユーザーの投稿のコメントには削除リンクが無いこと" do
+        login_for_system(other_user)
+        visit micropost_path(micropost)
+        within find("#comment-#{comment.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: comment.content
+          expect(page).not_to have_link '削除', href: micropost_path(micropost)
+        end
       end
     end
   end
