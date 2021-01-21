@@ -1,0 +1,14 @@
+<%= form_for(@comment) do |f| %>
+  <%= render 'layouts/error_messages', object: f.object %>
+  <%= hidden_field_tag :micropost_id, @micropost.id %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1"><br>
+      <div class="field">
+        <%= f.text_area :content, placeholder: "コメントを追加..." %>
+      </div>
+    </div>
+    <div class="col-md-3"><br>
+      <%= f.submit "コメント", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

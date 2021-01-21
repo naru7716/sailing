@@ -1,6 +1,7 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
@@ -17,6 +18,10 @@ class Micropost < ApplicationRecord
             },
             allow_nil: true
   validate  :picture_size
+
+  def feed_comment(micropost_id)
+    Comment.where("micropost_id = ?", micropost_id)
+  end
 
   private
     def picture_size
