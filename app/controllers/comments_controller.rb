@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if !@micropost.nil? && @comment.save
       flash[:success] = "コメントを追加しました！"
     else
-      flash[:danger] = "空のコメントは投稿できません。"
+      flash[:danger] = "コメントは50文字以内で入力してください"
     end
     redirect_to request.referrer || root_url
   end

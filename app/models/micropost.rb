@@ -19,6 +19,10 @@ class Micropost < ApplicationRecord
             allow_nil: true
   validate  :picture_size
 
+  def feed_comment(micropost_id)
+    Comment.where("micropost_id = ?", micropost_id)
+  end
+
   private
     def picture_size
       if picture.size > 5.megabytes

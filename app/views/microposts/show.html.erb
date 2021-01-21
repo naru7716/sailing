@@ -1,4 +1,5 @@
 <% provide(:title, "#{@micropost.name}") %>
+<% @comments  = @micropost.feed_comment(@micropost.id) %>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -25,6 +26,7 @@
       <h4 class="micropost-time">練習時間：<%= @micropost.time %> 時間</h4>
       <h4 class="micropost-maintenance">整備箇所：<%= @micropost.maintenance %></h4>
       <div class="comment">
+        <%= render "comments/feed_comments" %>
         <%= render "comments/new" %>
       </div>
     </div>
