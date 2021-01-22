@@ -15,10 +15,24 @@
 
 #logo {
   img {
-    max-width: 130px;
+    max-width: 100%;
     height: auto;
     box-sizing: border-box;
   }
+}
+
+@media screen and (max-width: 768px) {
+  #logo  {
+    img {
+      max-width: 400%;
+      height: auto;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.fh5co-nav-toggle {
+  position: fixed;
 }
 
 #fh5co-portfolio {
