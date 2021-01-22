@@ -1,35 +1,49 @@
 <% provide(:title, "プロフィール") %>
-<div class="container">
-  <h1>プロフィール</h1>
-  <div class="row">
-    <aside class="col-md-2">
-      <div class="user-picture-box">
-        <%= gravatar_for @user, size: 100 %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row profile">
+      <div class="col-md-9">
+        <h3 class="title-profile">プロフィール</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="user-picture-box">
+              <%= gravatar_for @user, size: 120, cl: "gravatar user-picture" %>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h4 class="show-user-name"><%= @user.name %></h4>　<%= @user.sex %>
+            <div class="show-user-introduction">
+              <%= @user.introduction %>
+            </div>
+            <section class="stats">
+              <%= render 'layouts/stats' %>
+            </section>
+            <% if current_user == @user %>
+              <div class="account-edit"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
+            <% end %>
+            <% if current_user.admin? || (current_user == @user) %>
+              <div class="account-delete"><%= link_to "アカウント削除", user_path(@user), method: :delete,
+                                            data: { confirm: "本当に削除しますか？" } %></div>
+            <% end %>
+            <br>
+            <%= render 'follow_form' if logged_in? %>
+          </div>
+        </div>
       </div>
-    </aside>
-    <div class="col-md-6">
-      <section class="user_name_info">
-        <%= @user.name %>
-      </section>
-      <% if current_user == @user %>
-        <div class="account-edit"><%= link_to "プロフィール編集", edit_user_path(@user) %></div>
-      <% end %>
-      <%= render 'follow_form' if logged_in? %>
-      <%= @user.introduction %>
-      <section class="stats">
-        <%= render 'layouts/stats' %>
-      </section>
-      <%= @user.sex %>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <% if @user.microposts.any? %>
+          <h3>投稿 (<%= @user.microposts.count %>)</h3>
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <%= will_paginate @microposts %>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <p><%= link_to "新しい投稿を作成する", new_micropost_path, class: "btn btn-primary btn-lg btn-demo btn-record" %></p>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-9">
-      <% if @user.microposts.any? %>
-        <h3>投稿 (<%= @user.microposts.count %>)</h3>
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <%= will_paginate @microposts %>
-      <% end %>
-    </div
 </div>
