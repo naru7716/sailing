@@ -1,44 +1,46 @@
 <% provide(:title, "投稿の編集") %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@micropost) do |f| %>
-        <%= render 'layouts/error_messages', object: f.object %>
-        <div class = 'form-group'>
-          <%= f.label :タイトル %>　<span class="input-need">※必須</span>
-          <%= f.text_field :name, class: 'form-control', id: 'タイトル' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :チーム名 %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :team, class: 'form-control', id: 'チーム名' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :風向風速 %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :wind, class: 'form-control', id: '風向風速' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :内容（練習メニューなど） %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :description, class: 'form-control', id: '内容（練習メニューなど）' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :練習時間 %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :time, class: 'form-control', id: '練習時間' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :整備箇所 %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
-        </div>
-        <span class="picture">
-          <%= f.label :picture %>　<span class="input-unneed">※任意</span>
-          <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish-picture' %>
-          <%= image_tag(@micropost.picture.thumb400.url) if @micropost.picture.url.present? %>
-        </span>
-        <br><br>
-        <%= f.submit "更新する", class: "btn btn-primary" %>
-        <p></p>
-        <%= link_to "削除", micropost_path(@micropost), method: :delete,
-                             data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
-      <% end %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@micropost) do |f| %>
+          <%= render 'layouts/error_messages', object: f.object %>
+          <div class = 'form-group'>
+            <%= f.label :タイトル %>　<span class="input-need">※必須</span>
+            <%= f.text_field :name, class: 'form-control', id: 'タイトル' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :チーム名 %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :team, class: 'form-control', id: 'チーム名' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :風向風速 %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :wind, class: 'form-control', id: '風向風速' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :内容（練習メニューなど） %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :description, class: 'form-control', id: '内容（練習メニューなど）' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :練習時間 %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :time, class: 'form-control', id: '練習時間' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :整備箇所 %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
+          </div>
+          <span class="picture">
+            <%= f.label :写真 %>　<span class="input-unneed">※任意</span>
+            <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish-picture' %>
+            <%= image_tag(@micropost.picture.thumb400.url) if @micropost.picture.url.present? %>
+          </span>
+          <br><br>
+          <%= f.submit "更新する", class: "btn btn-primary" %>
+          <p></p>
+          <%= link_to "削除", micropost_path(@micropost), method: :delete,
+                              data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

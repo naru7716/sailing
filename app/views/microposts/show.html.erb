@@ -1,33 +1,35 @@
 <% provide(:title, "#{@micropost.name}") %>
 <% @comments  = @micropost.feed_comment(@micropost.id) %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <span class="picture">
-        <%= link_to((image_tag @micropost.picture.thumb400.url), micropost_path(@micropost.id), class: 'micropost-picture') if @micropost.picture.url.present? %>
-      </span>
-      <%= render 'users/favorite_form' %>
-    </div>
-    <div class="col-md-8">
-      <h2 class="micropost-name"><%= @micropost.name %></h2>
-      <div class="change-micropost">
-        <% if current_user == @micropost.user %>
-          <%= link_to "編集", edit_micropost_path(@micropost), class: 'edit-micropost' %>　
-        <% end %>
-        <% if current_user.admin? || (current_user == @micropost.user) %>
-          <%= link_to "削除", micropost_path(@micropost), method: :delete, class: 'delete-micropsot',
-                                        data: { confirm: "本当に削除しますか？" } %>
-        <% end %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="picture">
+          <%= link_to((image_tag @micropost.picture.thumb400.url), micropost_path(@micropost.id), class: 'micropost-picture') if @micropost.picture.url.present? %>
+        </span>
+        <%= render 'users/favorite_form' %>
       </div>
-      <h5 class="micropost-description">内容（練習メニューなど): 
-      <h4><%= @micropost.description %></h4></h5>
-      <h4 class="micropost-team">チーム名：<%= @micropost.team %></h4>
-      <h4 class="micropost-wind">風向風速：<%= @micropost.wind %></h4>
-      <h4 class="micropost-time">練習時間：<%= @micropost.time %> 時間</h4>
-      <h4 class="micropost-maintenance">整備箇所：<%= @micropost.maintenance %></h4>
-      <div class="comment">
-        <%= render "comments/feed_comments" %>
-        <%= render "comments/new" %>
+      <div class="col-md-8">
+        <h2 class="micropost-name"><%= @micropost.name %></h2>
+        <div class="change-micropost">
+          <% if current_user == @micropost.user %>
+            <%= link_to "編集", edit_micropost_path(@micropost), class: 'edit-micropost' %>　
+          <% end %>
+          <% if current_user.admin? || (current_user == @micropost.user) %>
+            <%= link_to "削除", micropost_path(@micropost), method: :delete, class: 'delete-micropsot',
+                                          data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
+        </div>
+        <h5 class="micropost-description">内容（練習メニューなど): 
+        <h4><%= @micropost.description %></h4></h5>
+        <h4 class="micropost-team">チーム名：<%= @micropost.team %></h4>
+        <h4 class="micropost-wind">風向風速：<%= @micropost.wind %></h4>
+        <h4 class="micropost-time">練習時間：<%= @micropost.time %> 時間</h4>
+        <h4 class="micropost-maintenance">整備箇所：<%= @micropost.maintenance %></h4>
+        <div class="comment">
+          <%= render "comments/feed_comments" %>
+          <%= render "comments/new" %>
+        </div>
       </div>
     </div>
   </div>
