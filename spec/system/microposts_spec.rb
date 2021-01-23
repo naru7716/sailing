@@ -87,6 +87,55 @@ RSpec.describe "Microposts", type: :system do
         expect(page).to have_content '投稿が削除されました'
       end
     end
+
+    context "検索機能" do
+      context "ログインしている場合" do
+        before do
+          login_for_system(user)
+          visit root_path
+        end
+  
+        it "ログイン後の各ページに検索窓が表示されていること" do
+          expect(page).to have_css 'form#micropost_search'
+          visit about_path
+          expect(page).to have_css 'form#micropost_search'
+          visit users_path
+          expect(page).to have_css 'form#micropost_search'
+          visit user_path(user)
+          expect(page).to have_css 'form#micropost_search'
+          visit edit_user_path(user)
+          expect(page).to have_css 'form#micropost_search'
+          visit following_user_path(user)
+          expect(page).to have_css 'form#micropost_search'
+          visit followers_user_path(user)
+          expect(page).to have_css 'form#micropost_search'
+          visit microposts_path
+          expect(page).to have_css 'form#micropost_search'
+          visit micropost_path(micropost)
+          expect(page).to have_css 'form#micropost_search'
+          visit new_micropost_path
+          expect(page).to have_css 'form#micropost_search'
+          visit edit_micropost_path(micropost)
+          expect(page).to have_css 'form#micropost_search'
+        end
+        
+        it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
+          fill_in 'q_name_cont', with: ''
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "投稿一覧"
+          within find('.microposts') do
+            expect(page).to have_css 'li', count: Micropost.count
+          end
+        end
+      end
+  
+      context "ログインしていない場合" do
+        it "検索窓が表示されないこと" do
+          visit root_path
+          expect(page).not_to have_css 'form#micropost_search'
+        end
+      end
+    end
   end
 
   describe "投稿編集ページ" do
