@@ -20,12 +20,29 @@
                                           data: { confirm: "本当に削除しますか？" } %>
           <% end %>
         </div>
-        <h5 class="micropost-description">内容（練習メニューなど): 
+        <h5 class="micropost-description">内容（練習メニューなど) 
         <h4><%= @micropost.description %></h4></h5>
         <h4 class="micropost-team">チーム名：<%= @micropost.team %></h4>
         <h4 class="micropost-wind">風向風速：<%= @micropost.wind %></h4>
         <h4 class="micropost-time">練習時間：<%= @micropost.time %> 時間</h4>
         <h4 class="micropost-maintenance">整備箇所：<%= @micropost.maintenance %></h4>
+        <div class="settings">
+          <h5 class="title-settings">セッティング</h5>
+          <div class="row">
+            <div class="col-md-8">
+              <table class="ingredient">
+                <% @micropost.settings.each do |i| %>
+                  <% if i.name.present? %>
+                    <tr>
+                      <td><%= i.name %></td>
+                      <td><%= i.value %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
         <div class="comment">
           <%= render "comments/feed_comments" %>
           <%= render "comments/new" %>
