@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :setting do
-    name "MyString"
-    micropost_id 1
-    value "MyString"
+    name { "マストレーキ" }
+    value { "6750mm" }
+    association :micropost
   end
 end
