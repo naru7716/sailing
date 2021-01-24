@@ -25,9 +25,34 @@
     <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
   </div>
   <span class="picture">
-    <%= f.label :picture %>　<span class="input-unneed">※任意</span>
+    <%= f.label :写真 %>　<span class="input-unneed">※任意</span>
     <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'micropost_picture' %>
   </span>
+  <%= f.fields_for :settings do |i| %>
+    <div class="row">
+      <div class="col-md-9">
+        <div class = 'form-group'>
+          <%= i.label :name %>　<span class="input-unneed">※任意</span>
+          <%= i.text_field :name, class: 'form-control setting_name' %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class = 'form-group'>
+          <%= i.label :value %>　<span class="input-unneed">※任意</span>
+          <%= i.text_field :value, class: 'form-control setting_value' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
+  <%= render partial: "setting_form", locals: {f: f} %>
   <%= f.submit nil, class: 'btn btn-primary' %>
 <% end %>
 
