@@ -29,6 +29,11 @@ RSpec.describe "Microposts", type: :system do
         expect(page).to have_content '整備箇所'
         expect(page).to have_content '練習時間'
       end
+
+      it "Setting入力部分が10行表示されること" do
+        expect(page).to have_css 'input.setting_name', count: 10
+        expect(page).to have_css 'input.setting_value', count: 10
+      end
     end
 
     context "投稿作成処理" do
@@ -118,7 +123,7 @@ RSpec.describe "Microposts", type: :system do
           visit edit_micropost_path(micropost)
           expect(page).to have_css 'form#micropost_search'
         end
-        
+
         it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
           fill_in 'q_name_cont', with: ''
           click_button '検索'
