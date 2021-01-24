@@ -15,6 +15,15 @@
       <div class="micropost-maintenance">整備箇所: <%= micropost.maintenance %></div>
       <div class="micropost-description">内容（練習メニューなど）: <%= micropost.description %></div>
     </div>
+    <div class="micropost-setting">
+        <p class="title-setting-mini">【セッティング】</p>
+        <% micropost.settings.each_with_index do |ing, i| %>
+          <% if ing.name.present? %>
+            <%= "｜" unless i == 0 %><%= ing.name %>: <%= ing.value %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="micropost-other-info">
     <div class="row">
       <div class="col-md-6">
         <div class="micropost-created-at">
