@@ -41,6 +41,7 @@ gem 'faker'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave',             '1.2.2'
+gem 'ransack'
 
 group :production do
  gem 'fog-aws'

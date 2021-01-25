@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "投稿作成", type: :request do
   let(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
   let!(:micropost) { create(:micropost, user: user) }
   let(:picture_path) { File.join(Rails.root, 'spec/fixtures/test_micropost.jpg') }
   let(:picture) { Rack::Test::UploadedFile.new(picture_path) }
@@ -42,10 +43,23 @@ RSpec.describe "投稿作成", type: :request do
                                             wind: "南南東",
                                             maintenance: "グースネック交換",
                                             time: 5,
-                                            picture: picture } }
+                                            picture: picture,
+                                            settings_attributes: [
+                                              name: "ギア",
+                                              value: "0"
+                                            ] } }
       }.to change(Micropost, :count).by(1)
       follow_redirect!
       expect(response).to render_template('microposts/show')
+    end
+
+    it "セッティングのデータも同時に増えること" do
+      expect {
+        post microposts_path, params: { micropost: { name: "大会１ヶ月前",
+                                            settings_attributes: [
+                                              name: "ギア",
+                                              value: "0"] } }
+      }.to change(Setting, :count).by(1)
     end
 
     it "無効な投稿データでは登録できないこと" do
@@ -59,6 +73,20 @@ RSpec.describe "投稿作成", type: :request do
                                             picture: picture } }
       }.not_to change(Micropost, :count)
       expect(response).to render_template('microposts/new')
+    end
+  end
+
+  context "セッティング無しの投稿登録" do
+    it "正常に完了すること" do
+      expect {
+        post microposts_path, params: { micropost: { name: "大会１ヶ月前" } }
+      }.to change(Micropost, :count).by(0)
+   end
+
+    it "セッティングのデータは増えないこと" do
+      expect {
+        post microposts_path, params: { microposts: { name: "大会１ヶ月前" } }
+      }.not_to change(Setting, :count)
     end
   end
 end

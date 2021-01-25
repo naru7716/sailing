@@ -24,7 +24,7 @@
 @media screen and (max-width: 768px) {
   #logo  {
     img {
-      max-width: 400%;
+      max-width: 300%;
       height: auto;
       box-sizing: border-box;
     }
@@ -344,4 +344,47 @@ h3.micropost-name {
 
 .micropost-user {
  margin-bottom: 20px;
+}
+
+.title-setting-name, .title-setting-value {
+  font-weight: bold;
+}
+
+.settings {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h5 {
+    font-size: 17px;
+  }
+}
+
+.title-settings {
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+table.setting {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.setting th, table.setting td {
+  padding: 10px 0;
+  text-align: center;
+}
+
+table.ingredient tr:nth-child(odd) {
+  background-color: #eee 
+}
+
+.micropost-setting {
+  margin: 15px 0;
+}
+
+.title-setting-mini {
+  font-weight: bold;
+  margin-bottom: 5px;
 }

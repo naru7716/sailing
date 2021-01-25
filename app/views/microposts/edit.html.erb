@@ -18,10 +18,6 @@
             <%= f.text_field :wind, class: 'form-control', id: '風向風速' %>
           </div>
           <div class = 'form-group'>
-            <%= f.label :内容（練習メニューなど） %>　<span class="input-unneed">※任意</span>
-            <%= f.text_field :description, class: 'form-control', id: '内容（練習メニューなど）' %>
-          </div>
-          <div class = 'form-group'>
             <%= f.label :練習時間 %>　<span class="input-unneed">※任意</span>
             <%= f.text_field :time, class: 'form-control', id: '練習時間' %>
           </div>
@@ -29,12 +25,37 @@
             <%= f.label :整備箇所 %>　<span class="input-unneed">※任意</span>
             <%= f.text_field :maintenance, class: 'form-control', id: '整備箇所' %>
           </div>
+          <div class = 'form-group'>
+            <%= f.label :内容（練習メニューなど） %>　<span class="input-unneed">※任意</span>
+            <%= f.text_field :description, class: 'form-control', id: '内容（練習メニューなど）' %>
+          </div>
           <span class="picture">
             <%= f.label :写真 %>　<span class="input-unneed">※任意</span>
             <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish-picture' %>
             <%= image_tag(@micropost.picture.thumb400.url) if @micropost.picture.url.present? %>
           </span>
-          <br><br>
+          <div class="row">
+            <div class="col-md-9">
+              <p class="title-setting-name">セッティング（10種類まで登録可）　<span class="input-unneed">※任意</span></p>
+            </div>
+            <div class="col-md-3">
+              <p class="title-setting-value">数値　<span class="input-unneed">※任意</span></p>
+            </div>
+          </div>
+          <%= f.fields_for :settings do |i| %>
+            <div class="row">
+              <div class="col-md-9">
+                <div class = 'form-group'>
+                  <%= i.text_field :name, class: 'form-control setting_name' %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class = 'form-group'>
+                  <%= i.text_field :value, class: 'form-control setting_value' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
           <%= f.submit "更新する", class: "btn btn-primary" %>
           <p></p>
           <%= link_to "削除", micropost_path(@micropost), method: :delete,

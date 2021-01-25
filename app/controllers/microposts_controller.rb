@@ -9,6 +9,7 @@ class MicropostsController < ApplicationController
 
   def new
     @micropost = Micropost.new
+    @micropost.settings.build
   end
 
   def create
@@ -49,9 +50,11 @@ class MicropostsController < ApplicationController
 
   private
 
-    def micropost_params
-      params.require(:micropost).permit(:name, :discription, :time, :team, :maintenance, :wind, :picture)
-    end
+  def micropost_params
+    params.require(:micropost).permit(:name, :description, :team, :time,
+                                 :wind, :maintenance, :picture,
+                                 settings_attributes: [:id, :name, :value])
+  end
 
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])

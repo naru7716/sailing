@@ -10,6 +10,7 @@ ja:
     models:
       user: ユーザー
       comment: コメント
+      setting: セッティング
     attributes:
       user:
         id: ID
@@ -31,6 +32,10 @@ ja:
         time: 練習時間
         user_id: 作成者のID
         picture: 投稿の写真
+      setting:
+        name: セッティング項目（10種類まで登録可）
+        value: 数値
+        micropost: 関連した投稿のID
   date:
     abbr_day_names:
     - 日
