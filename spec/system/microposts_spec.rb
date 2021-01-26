@@ -123,15 +123,6 @@ RSpec.describe "Microposts", type: :system do
           visit edit_micropost_path(micropost)
           expect(page).to have_css 'form#micropost_search'
         end
-
-        it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
-          fill_in 'q_name_cont', with: ''
-          click_button '検索'
-          expect(page).to have_css 'h3', text: "投稿一覧"
-          within find('.microposts') do
-            expect(page).to have_css 'li', count: Micropost.count
-          end
-        end
       end
   
       context "ログインしていない場合" do
