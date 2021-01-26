@@ -347,6 +347,7 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
+      picture: open("#{Rails.root}/public/images/5.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -384,8 +385,8 @@ micropost12.comments.create(user_id: user2.id, content: "他艇と距離を保�
 user3.notifications.create(user_id: user3.id, micropost_id: micropost15.id,
                            from_user_id: user1.id, variety: 1)
 user3.notifications.create(user_id: user3.id, micropost_id: micropost15.id,
-                           from_user_id: user1.id, variety: 2, content: "美味しそう！私も食べてみたい！")
+                           from_user_id: user1.id, variety: 2)
 user3.notifications.create(user_id: user3.id, micropost_id: micropost12.id,
                            from_user_id: user2.id, variety: 1)
 user3.notifications.create(user_id: user3.id, micropost_id: micropost12.id,
-                           from_user_id: user2.id, variety: 2, content: "また作ってー！")
+                           from_user_id: user2.id, variety: 2)
