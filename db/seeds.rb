@@ -53,7 +53,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/1.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -75,7 +74,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/1.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -97,7 +95,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/1.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -119,7 +116,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/2.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -141,7 +137,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/2.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -163,7 +158,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/2.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -185,7 +179,6 @@ Micropost.create!(
       time: 5,
       wind: wind3,
       maintenance: maintenance3,
-      picture: open("#{Rails.root}/public/images/3.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -207,7 +200,6 @@ Micropost.create!(
       time: 5,
       wind: wind3,
       maintenance: maintenance3,
-      picture: open("#{Rails.root}/public/images/3.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -229,7 +221,6 @@ Micropost.create!(
       time: 5,
       wind: wind3,
       maintenance: maintenance3,
-      picture: open("#{Rails.root}/public/images/3.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -251,7 +242,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/4.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -273,7 +263,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/4.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -295,7 +284,6 @@ Micropost.create!(
       time: 5,
       wind: wind1,
       maintenance: maintenance1,
-      picture: open("#{Rails.root}/public/images/4.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -317,7 +305,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/5.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -339,7 +326,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/5.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
@@ -361,7 +347,6 @@ Micropost.create!(
       time: 5,
       wind: wind2,
       maintenance: maintenance2,
-      picture: open("#{Rails.root}/public/images/5.jpg"),
       settings_attributes: [
                                 { name: "ギア", value: "0" },
                                 { name: "マストレーキ", value: "6750mm" },
