@@ -1,6 +1,126 @@
-<% provide(:title, "使い方") %>
+<% provide(:title, "Enjoy Sailingとは？") %>
 <div id="fh5co-about">
   <div class="container">
-    <h1>Enjoy Sailingとは？</h1>
+    <div class="row">
+      <div class="col-md-10">
+        <h1 class="title-about">Enjoy Sailingとは？</h1>
+        <h4>　日々のセーリングを、セッティングや写真、活動記録と共に仲間とシェアできるサービスです。</h4>
+      </div>
+      <div class="col-md-10">
+        <h2 class="title-use">主な使い方</h2>
+        <div>
+          <ol class="main-use">
+            <li class="A">自分達のチームの記録として使う</li>
+            <li class="B">他のチームと情報交換する</li>
+          </ol>
+        </div>
+        <p class="about-line"></p>
+        <ol class="main-use">
+          <li class="A">自分達のチームの記録として使う</li>
+        </ol>
+        <div class="use-content">
+          <p>　　日々のセーリングライフを登録して、自分達の成長記録を作成しましょう。</p>
+          <p>　　練習の成長率があまり上がらないと感じたら、</p>
+          <p>　　過去の投稿をもとに、チームでコメントしながら上達へ近づけましょう。</p>
+          <p>　　タイトルやセッティングを元に検索して探したりすることができます。</p>
+        </div>
+        <ol class="how-to-use">
+          <li>新しい投稿を写真やメモと共に追加</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>（1）「新しい投稿を作成する」をクリックします。</p>
+                <%= image_tag("/images/useA-1.jpg", :alt => "useA-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（2）情報を入力します。</p>
+                <%= image_tag("/images/useA-2.jpg", :alt => "useA-2", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（3）投稿の登録が完了しました！</p>
+                <%= image_tag("/images/useA-3.jpg", :alt => "useA-3", class: "use-picture") %>
+              </div>
+              <div class="col-md-8">
+                <p>投稿には下記の情報を登録することができます。</p>
+                <p>　・タイトル</p>
+                <p>　・内容（練習など）</p>
+                <p>　・チーム名</p>
+                <p>　・風速風向</p>
+                <p>　・整備箇所</p>
+                <p>　・練習時間</p>
+                <p>　・セッティング項目</p>
+              </div>
+            </div>
+          </div>
+          <li>投稿を「お気に入りに登録」</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>（1）「お気に入りに登録する」をクリックします。</p>
+                <%= image_tag("/images/useA-4.jpg", :alt => "useA-4", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（2）メニューから「お気に入り」をクリックします。</p>
+                <%= image_tag("/images/useA-5.jpg", :alt => "useA-5", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（3）お気に入り登録済みの投稿を見ることができます。</p>
+                <%= image_tag("/images/useA-6.jpg", :alt => "useA-6", class: "use-picture") %>
+              </div>
+            </div>
+          </div>
+          <li>登録済みの投稿を検索</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>（1）検索バーを見つけます。</p>
+                <%= image_tag("/images/useA-7.jpg", :alt => "useA-7", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（2）探したい投稿に関連するワード（例えば「１ヶ月前」）を入力します。</p>
+                <%= image_tag("/images/useA-8.jpg", :alt => "useA-8", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（3）タイトル名かセッティング名に「１ヶ月前」を含む投稿の一覧が表示されます。</p>
+                <%= image_tag("/images/useA-9.jpg", :alt => "useA-9", class: "use-picture") %>
+              </div>
+            </div>
+          </div>
+        </ol>
+        <ol class="main-use">
+          <li class="B">他のチームと情報交換する</li>
+        </ol>
+        <div class="use-content">
+          <p>　　例えば他のチームのメンバーをフォローすれば、その人の投稿を一覧で見ることができます。</p>
+          <p>　　また、参考になる投稿をお気に入りに登録したり、コメントしたりできます。</p>
+          <p>　　合同で練習に誘うきっかけになれば幸いです。</p>
+        </div>
+        <ol class="how-to-use">
+          <li>投稿にコメント（またはお気に入り登録）</li>
+          <div class="use-explanation">
+            <div class="row">
+              <div class="col-md-4">
+                <p>（1）投稿のページへ飛び、コメントを入力します。</p>
+                <%= image_tag("/images/useB-1.jpg", :alt => "useB-1", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（2）コメントが追加されました！</p>
+                <%= image_tag("/images/useB-2.jpg", :alt => "useB-2", class: "use-picture") %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <p>（3）投稿を作成した人にお気に入り登録があった旨の通知が届いています。</p>
+                <%= image_tag("/images/useB-3.jpg", :alt => "useB-1-3", class: "use-picture") %>
+              </div>
+              <div class="col-md-4">
+                <p>（4）投稿を作成した人にコメントがあった旨の通知が届いています。　　　</p>
+                <%= image_tag("/images/useB-4.jpg", :alt => "useB-4", class: "use-picture") %>
+              </div>
+            </div>
+          </div>
+        </ol>
+      </div>
+    </div>
   </div>
 </div>
